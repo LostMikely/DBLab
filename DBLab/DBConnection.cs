@@ -17,7 +17,7 @@ namespace DBLabs
         // */
         public DBConnection()
         {
-            string conString = "";
+            string conString = "Data Source=www4.idt.mdh.se;" + "Initial Catalog=DVA234_2020_G26_db;" + "User Id=DVA234_2020_G26" + "Password=Corona2020;";
             con = new SqlConnection(conString);
         }
 
@@ -34,8 +34,6 @@ namespace DBLabs
          */
         public override bool login(string username, string password)
         {
-            string connectionString = "Data Source=www4.idt.mdh.se;" + "Initial Catalog=DVA234_2020_G26_db;" + "User Id=username" + "Password=Corona2020;";
-
             return true;
         }
 /*
