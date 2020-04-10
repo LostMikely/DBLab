@@ -34,6 +34,14 @@ namespace DBLabs
         {
             string conString = "Data Source=www4.idt.mdh.se;" + "Initial Catalog=DVA234_2020_G26_db;" + "User Id="+username +"Password=" + password + ";";
             con = new SqlConnection(conString);
+            try
+            {
+                con.Open();
+            } catch (Exception e)
+            {
+                return false;
+            }
+            con.Close();
             return true;
         }
 /*
