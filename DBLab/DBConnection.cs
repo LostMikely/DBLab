@@ -20,7 +20,7 @@ namespace DBLabs
         }
 
         /*
-         * The function to logon to the database
+         * The function to login to the database
          * 
          * Parameters:
          *              username    The userid used to login to SQL Server
@@ -32,6 +32,8 @@ namespace DBLabs
          */
         public override bool login(string username, string password)
         {
+            string connectionString = "Data Source=www4.idt.mdh.se;" + "Initial Catalog=DVA234_2020_G26_db;" + "User Id=username" + "Password=Corona2020;";
+
             return true;
         }
 /*
