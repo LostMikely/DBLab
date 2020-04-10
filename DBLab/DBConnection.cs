@@ -10,13 +10,15 @@ namespace DBLabs
 {
     public class DBConnection : DBLabsDLL.DBConnectionBase
     {
+        SqlConnection con;
        
         ///*
         // * The constructor
         // */
         public DBConnection()
         {
-            
+            string conString = "";
+            con = new SqlConnection(conString);
         }
 
         /*
