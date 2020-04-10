@@ -37,7 +37,7 @@ namespace DBLabs
             try
             {
                 con.Open();
-            } catch (Exception e)
+            } catch (Exception)
             {
                 return false;
             }
