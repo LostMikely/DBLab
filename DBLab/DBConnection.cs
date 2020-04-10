@@ -34,7 +34,7 @@ namespace DBLabs
          */
         public override bool login(string username, string password)
         {
-            string connectionString = "Data Source=www4.idt.mdh.se;" + "Initial Catalog=DVA234_2020_G26_db;" + "User Id=username" + "Password=Corona2020;";
+            string connectionString = "Data Source=www4.idt.mdh.se;" + "Initial Catalog=DVA234_2020_G26_db;" + "User Id=" + username + ";" + "Password=" + password + ";";
 
             return true;
         }
