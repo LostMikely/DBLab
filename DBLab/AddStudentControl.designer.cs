@@ -58,6 +58,7 @@
             this.lvcPhoneNumber = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lblId = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.btnAddStudent = new System.Windows.Forms.Button();
             this.AddStudentGB.SuspendLayout();
             this.gbxGender.SuspendLayout();
             this.gbxPhone.SuspendLayout();
@@ -65,6 +66,7 @@
             // 
             // AddStudentGB
             // 
+            this.AddStudentGB.Controls.Add(this.btnAddStudent);
             this.AddStudentGB.Controls.Add(this.textBox1);
             this.AddStudentGB.Controls.Add(this.lblId);
             this.AddStudentGB.Controls.Add(this.gbxPhone);
@@ -199,7 +201,6 @@
             this.rbtUnspecified.Name = "rbtUnspecified";
             this.rbtUnspecified.Size = new System.Drawing.Size(81, 17);
             this.rbtUnspecified.TabIndex = 2;
-            this.rbtUnspecified.TabStop = true;
             this.rbtUnspecified.Text = "Unspecified";
             this.rbtUnspecified.UseVisualStyleBackColor = true;
             // 
@@ -346,6 +347,16 @@
             this.textBox1.Size = new System.Drawing.Size(141, 20);
             this.textBox1.TabIndex = 23;
             // 
+            // btnAddStudent
+            // 
+            this.btnAddStudent.Location = new System.Drawing.Point(15, 334);
+            this.btnAddStudent.Name = "btnAddStudent";
+            this.btnAddStudent.Size = new System.Drawing.Size(75, 23);
+            this.btnAddStudent.TabIndex = 24;
+            this.btnAddStudent.Text = "Add Student";
+            this.btnAddStudent.UseVisualStyleBackColor = true;
+            this.btnAddStudent.Click += new System.EventHandler(this.btnAddStudent_Click);
+            // 
             // AddStudentControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -396,5 +407,6 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label lblId;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button btnAddStudent;
     }
 }

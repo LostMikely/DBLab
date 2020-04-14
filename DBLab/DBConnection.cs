@@ -8,6 +8,66 @@ using System.Windows.Forms;
 
 namespace DBLabs
 {
+    class Student
+    {
+        public string StudentID { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public char Gender { get; set; }
+        public string StreetAddress { get; set; }
+        public int ZipCode { get; set; }
+        public string City { get; set; }
+        public string Country { get; set; }
+        public string BirthDate { get; set; }
+        public string StudentType { get; set; }
+        public List<PhoneNumber> PhoneNumbers;
+
+        public void ValidateData()
+        {
+            if (StudentID.Length == 0 || StudentID.Length > 8)
+                throw new Exception("Incorrect student ID");
+
+            if (FirstName.Length == 0 || FirstName.Length > 50)
+                throw new Exception("Incorrect first name");
+
+            if (LastName.Length == 0 || LastName.Length > 50)
+                throw new Exception("Incorrect last name");
+
+            if (Gender != 'M' && Gender != 'F' && Gender != 'U')
+                throw new Exception("Incorrect gender");
+
+            if (StreetAddress.Length == 0 || StreetAddress.Length > 100)
+                throw new Exception("Incorrect street address");
+
+            if (City.Length == 0 || City.Length > 50)
+                throw new Exception("Incorrect city");
+            
+            if (Country.Length == 0 || Country.Length > 50)
+                throw new Exception("Incorrect country");
+
+            if (StudentType.Length == 0 || StudentType.Length > 50)
+                throw new Exception("Incorrect student type");
+        }
+
+    }
+
+    class PhoneNumber
+    {
+        public string Type { get; set; }
+        public string Number { get; set; }
+
+        public PhoneNumber(string type, string number)
+        {
+            Type = type;
+            Number = number;
+        }
+
+        public void ValidateData()
+        {
+
+        }
+    }
+
     public class DBConnection : DBLabsDLL.DBConnectionBase
     {
         SqlConnection con;
@@ -52,7 +112,16 @@ namespace DBLabs
 
     // Here you need to implement your own methods that call the stored procedures 
     // addStudent and addStudentPhoneNo
-
+        void CallSPAddStudent(Student student)
+        {
+            try
+            {
+                student.ValidateData();
+            } catch (Exception e)
+            {
+                MessageBox.Show($"Error: {e.Message}", "Data validation error");
+            }
+        }
 
 /*
  --------------------------------------------------------------------------------------------
