@@ -44,12 +44,39 @@ namespace DBLabs
             con.Close();
             return true;
         }
-/*
- --------------------------------------------------------------------------------------------
- IMPLEMENTATION TO BE USED IN LAB 2. 
- --------------------------------------------------------------------------------------------
-*/
+        /*
+         --------------------------------------------------------------------------------------------
+         IMPLEMENTATION TO BE USED IN LAB 2. 
+         --------------------------------------------------------------------------------------------
+        */
+        public class Student
+        {
+            int StudentID;
+            string FirstName;
+            string LastName;
+            char? Gender;
+            string StreetAdress;
+            int? ZipCode;
+            string City;
+            string Country;
+            DateTime? Birthdate;
+            string StudentType;
 
+
+            public Student(int studentID, string firstName, string lastName, char? gender, string streetAdress, int? zipCode, string city, string country, DateTime? birthdate, string studentType)
+            {
+                StudentID = studentID;
+                FirstName = firstName;
+                LastName = lastName;
+                Gender = gender;
+                StreetAdress = streetAdress;
+                ZipCode = zipCode;
+                City = city;
+                Country = country;
+                Birthdate = birthdate;
+                StudentType = studentType;
+            }
+        }
     // Here you need to implement your own methods that call the stored procedures 
     // addStudent and addStudentPhoneNo
 
