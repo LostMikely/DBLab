@@ -30,7 +30,7 @@
         {
             this.AddStudentGB = new System.Windows.Forms.GroupBox();
             this.btnAddStudent = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbxStudentID = new System.Windows.Forms.TextBox();
             this.lblId = new System.Windows.Forms.Label();
             this.gbxPhone = new System.Windows.Forms.GroupBox();
             this.lvwPhoneNumbers = new System.Windows.Forms.ListView();
@@ -40,7 +40,7 @@
             this.cbxPhoneType = new System.Windows.Forms.ComboBox();
             this.tbxPhoneNumber = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cbxStudentType = new System.Windows.Forms.ComboBox();
             this.lblBirthdate = new System.Windows.Forms.Label();
             this.dtpBirthdate = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
@@ -48,7 +48,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tbxCity = new System.Windows.Forms.TextBox();
             this.gbxGender = new System.Windows.Forms.GroupBox();
-            this.rbtUnspecified = new System.Windows.Forms.RadioButton();
             this.rbtFemale = new System.Windows.Forms.RadioButton();
             this.rbtMale = new System.Windows.Forms.RadioButton();
             this.label4 = new System.Windows.Forms.Label();
@@ -67,11 +66,11 @@
             // AddStudentGB
             // 
             this.AddStudentGB.Controls.Add(this.btnAddStudent);
-            this.AddStudentGB.Controls.Add(this.textBox1);
+            this.AddStudentGB.Controls.Add(this.tbxStudentID);
             this.AddStudentGB.Controls.Add(this.lblId);
             this.AddStudentGB.Controls.Add(this.gbxPhone);
             this.AddStudentGB.Controls.Add(this.label5);
-            this.AddStudentGB.Controls.Add(this.comboBox1);
+            this.AddStudentGB.Controls.Add(this.cbxStudentType);
             this.AddStudentGB.Controls.Add(this.lblBirthdate);
             this.AddStudentGB.Controls.Add(this.dtpBirthdate);
             this.AddStudentGB.Controls.Add(this.label2);
@@ -90,26 +89,26 @@
             this.AddStudentGB.Location = new System.Drawing.Point(14, 12);
             this.AddStudentGB.Name = "AddStudentGB";
             this.AddStudentGB.Size = new System.Drawing.Size(1051, 507);
-            this.AddStudentGB.TabIndex = 54;
+            this.AddStudentGB.TabIndex = 0;
             this.AddStudentGB.TabStop = false;
             this.AddStudentGB.Text = "Add Student";
             // 
             // btnAddStudent
             // 
-            this.btnAddStudent.Location = new System.Drawing.Point(15, 334);
+            this.btnAddStudent.Location = new System.Drawing.Point(15, 328);
             this.btnAddStudent.Name = "btnAddStudent";
             this.btnAddStudent.Size = new System.Drawing.Size(75, 23);
-            this.btnAddStudent.TabIndex = 24;
+            this.btnAddStudent.TabIndex = 12;
             this.btnAddStudent.Text = "Add Student";
             this.btnAddStudent.UseVisualStyleBackColor = true;
             this.btnAddStudent.Click += new System.EventHandler(this.btnAddStudent_Click);
             // 
-            // textBox1
+            // tbxStudentID
             // 
-            this.textBox1.Location = new System.Drawing.Point(97, 25);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(141, 20);
-            this.textBox1.TabIndex = 23;
+            this.tbxStudentID.Location = new System.Drawing.Point(97, 25);
+            this.tbxStudentID.Name = "tbxStudentID";
+            this.tbxStudentID.Size = new System.Drawing.Size(141, 20);
+            this.tbxStudentID.TabIndex = 0;
             // 
             // lblId
             // 
@@ -144,7 +143,7 @@
             this.lvwPhoneNumbers.Location = new System.Drawing.Point(6, 46);
             this.lvwPhoneNumbers.Name = "lvwPhoneNumbers";
             this.lvwPhoneNumbers.Size = new System.Drawing.Size(284, 112);
-            this.lvwPhoneNumbers.TabIndex = 22;
+            this.lvwPhoneNumbers.TabIndex = 3;
             this.lvwPhoneNumbers.UseCompatibleStateImageBehavior = false;
             this.lvwPhoneNumbers.View = System.Windows.Forms.View.Details;
             // 
@@ -163,7 +162,7 @@
             this.btnPhoneAdd.Location = new System.Drawing.Point(215, 17);
             this.btnPhoneAdd.Name = "btnPhoneAdd";
             this.btnPhoneAdd.Size = new System.Drawing.Size(75, 23);
-            this.btnPhoneAdd.TabIndex = 21;
+            this.btnPhoneAdd.TabIndex = 2;
             this.btnPhoneAdd.Text = "Add";
             this.btnPhoneAdd.UseVisualStyleBackColor = true;
             this.btnPhoneAdd.Click += new System.EventHandler(this.btnPhoneAdd_Click);
@@ -174,36 +173,36 @@
             this.cbxPhoneType.Location = new System.Drawing.Point(6, 19);
             this.cbxPhoneType.Name = "cbxPhoneType";
             this.cbxPhoneType.Size = new System.Drawing.Size(76, 21);
-            this.cbxPhoneType.TabIndex = 18;
+            this.cbxPhoneType.TabIndex = 0;
             // 
             // tbxPhoneNumber
             // 
             this.tbxPhoneNumber.Location = new System.Drawing.Point(88, 19);
             this.tbxPhoneNumber.Name = "tbxPhoneNumber";
             this.tbxPhoneNumber.Size = new System.Drawing.Size(121, 20);
-            this.tbxPhoneNumber.TabIndex = 19;
+            this.tbxPhoneNumber.TabIndex = 1;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 304);
+            this.label5.Location = new System.Drawing.Point(12, 298);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(71, 13);
             this.label5.TabIndex = 17;
             this.label5.Text = "Student Type";
             // 
-            // comboBox1
+            // cbxStudentType
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(97, 301);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(141, 21);
-            this.comboBox1.TabIndex = 16;
+            this.cbxStudentType.FormattingEnabled = true;
+            this.cbxStudentType.Location = new System.Drawing.Point(97, 295);
+            this.cbxStudentType.Name = "cbxStudentType";
+            this.cbxStudentType.Size = new System.Drawing.Size(141, 21);
+            this.cbxStudentType.TabIndex = 11;
             // 
             // lblBirthdate
             // 
             this.lblBirthdate.AutoSize = true;
-            this.lblBirthdate.Location = new System.Drawing.Point(12, 278);
+            this.lblBirthdate.Location = new System.Drawing.Point(12, 272);
             this.lblBirthdate.Name = "lblBirthdate";
             this.lblBirthdate.Size = new System.Drawing.Size(49, 13);
             this.lblBirthdate.TabIndex = 15;
@@ -211,15 +210,15 @@
             // 
             // dtpBirthdate
             // 
-            this.dtpBirthdate.Location = new System.Drawing.Point(97, 275);
+            this.dtpBirthdate.Location = new System.Drawing.Point(97, 269);
             this.dtpBirthdate.Name = "dtpBirthdate";
             this.dtpBirthdate.Size = new System.Drawing.Size(141, 20);
-            this.dtpBirthdate.TabIndex = 14;
+            this.dtpBirthdate.TabIndex = 10;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 249);
+            this.label2.Location = new System.Drawing.Point(12, 243);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(43, 13);
             this.label2.TabIndex = 13;
@@ -227,15 +226,15 @@
             // 
             // tbxCountry
             // 
-            this.tbxCountry.Location = new System.Drawing.Point(97, 249);
+            this.tbxCountry.Location = new System.Drawing.Point(97, 243);
             this.tbxCountry.Name = "tbxCountry";
             this.tbxCountry.Size = new System.Drawing.Size(141, 20);
-            this.tbxCountry.TabIndex = 12;
+            this.tbxCountry.TabIndex = 9;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 223);
+            this.label1.Location = new System.Drawing.Point(12, 217);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(24, 13);
             this.label1.TabIndex = 11;
@@ -243,34 +242,23 @@
             // 
             // tbxCity
             // 
-            this.tbxCity.Location = new System.Drawing.Point(97, 223);
+            this.tbxCity.Location = new System.Drawing.Point(97, 217);
             this.tbxCity.Name = "tbxCity";
             this.tbxCity.Size = new System.Drawing.Size(141, 20);
-            this.tbxCity.TabIndex = 10;
+            this.tbxCity.TabIndex = 8;
             // 
             // gbxGender
             // 
             this.gbxGender.AutoSize = true;
             this.gbxGender.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.gbxGender.Controls.Add(this.rbtUnspecified);
             this.gbxGender.Controls.Add(this.rbtFemale);
             this.gbxGender.Controls.Add(this.rbtMale);
-            this.gbxGender.Location = new System.Drawing.Point(12, 104);
+            this.gbxGender.Location = new System.Drawing.Point(97, 104);
             this.gbxGender.Name = "gbxGender";
-            this.gbxGender.Size = new System.Drawing.Size(212, 55);
-            this.gbxGender.TabIndex = 9;
+            this.gbxGender.Size = new System.Drawing.Size(125, 55);
+            this.gbxGender.TabIndex = 5;
             this.gbxGender.TabStop = false;
             this.gbxGender.Text = "Gender";
-            // 
-            // rbtUnspecified
-            // 
-            this.rbtUnspecified.AutoSize = true;
-            this.rbtUnspecified.Location = new System.Drawing.Point(125, 19);
-            this.rbtUnspecified.Name = "rbtUnspecified";
-            this.rbtUnspecified.Size = new System.Drawing.Size(81, 17);
-            this.rbtUnspecified.TabIndex = 2;
-            this.rbtUnspecified.Text = "Unspecified";
-            this.rbtUnspecified.UseVisualStyleBackColor = true;
             // 
             // rbtFemale
             // 
@@ -279,7 +267,7 @@
             this.rbtFemale.Location = new System.Drawing.Point(6, 19);
             this.rbtFemale.Name = "rbtFemale";
             this.rbtFemale.Size = new System.Drawing.Size(59, 17);
-            this.rbtFemale.TabIndex = 1;
+            this.rbtFemale.TabIndex = 0;
             this.rbtFemale.TabStop = true;
             this.rbtFemale.Text = "Female";
             this.rbtFemale.UseVisualStyleBackColor = true;
@@ -297,7 +285,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 197);
+            this.label4.Location = new System.Drawing.Point(12, 191);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(50, 13);
             this.label4.TabIndex = 8;
@@ -305,7 +293,7 @@
             // 
             // tbxZipCode
             // 
-            this.tbxZipCode.Location = new System.Drawing.Point(97, 197);
+            this.tbxZipCode.Location = new System.Drawing.Point(97, 191);
             this.tbxZipCode.Name = "tbxZipCode";
             this.tbxZipCode.Size = new System.Drawing.Size(141, 20);
             this.tbxZipCode.TabIndex = 7;
@@ -313,7 +301,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 171);
+            this.label3.Location = new System.Drawing.Point(12, 165);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(76, 13);
             this.label3.TabIndex = 6;
@@ -321,10 +309,10 @@
             // 
             // tbxStreetAddress
             // 
-            this.tbxStreetAddress.Location = new System.Drawing.Point(97, 171);
+            this.tbxStreetAddress.Location = new System.Drawing.Point(97, 165);
             this.tbxStreetAddress.Name = "tbxStreetAddress";
             this.tbxStreetAddress.Size = new System.Drawing.Size(141, 20);
-            this.tbxStreetAddress.TabIndex = 5;
+            this.tbxStreetAddress.TabIndex = 6;
             // 
             // lblLastName
             // 
@@ -340,7 +328,7 @@
             this.tbxLastName.Location = new System.Drawing.Point(97, 78);
             this.tbxLastName.Name = "tbxLastName";
             this.tbxLastName.Size = new System.Drawing.Size(141, 20);
-            this.tbxLastName.TabIndex = 3;
+            this.tbxLastName.TabIndex = 2;
             // 
             // lblFirstName
             // 
@@ -356,7 +344,7 @@
             this.tbxFirstName.Location = new System.Drawing.Point(97, 52);
             this.tbxFirstName.Name = "tbxFirstName";
             this.tbxFirstName.Size = new System.Drawing.Size(141, 20);
-            this.tbxFirstName.TabIndex = 0;
+            this.tbxFirstName.TabIndex = 1;
             // 
             // AddStudentControl
             // 
@@ -386,7 +374,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox tbxCity;
         private System.Windows.Forms.GroupBox gbxGender;
-        private System.Windows.Forms.RadioButton rbtUnspecified;
         private System.Windows.Forms.RadioButton rbtFemale;
         private System.Windows.Forms.RadioButton rbtMale;
         private System.Windows.Forms.Label label4;
@@ -405,9 +392,9 @@
         private System.Windows.Forms.ComboBox cbxPhoneType;
         private System.Windows.Forms.TextBox tbxPhoneNumber;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cbxStudentType;
         private System.Windows.Forms.Label lblId;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbxStudentID;
         private System.Windows.Forms.Button btnAddStudent;
     }
 }

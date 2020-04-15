@@ -60,7 +60,15 @@ namespace DBLabs
 
         private void btnAddStudent_Click(object sender, EventArgs e)
         {
+            char gender;
+            if (rbtFemale.Checked) gender = 'F';
+            else if (rbtMale.Checked) gender = 'M';
+            else throw new Exception("Something weird just happened...");
 
+            if(dbconn.CallSPAddStudent(tbxStudentID.Text, tbxFirstName.Text, tbxLastName.Text, gender, tbxStreetAddress.Text, tbxZipCode.Text, tbxCity.Text, tbxCountry.Text, dtpBirthdate.Value.ToString(), cbxStudentType.Text))
+            {
+                MessageBox.Show("Student added! :)", "Great success!");
+            }
         }
 
         private void btnPhoneAdd_Click(object sender, EventArgs e)
