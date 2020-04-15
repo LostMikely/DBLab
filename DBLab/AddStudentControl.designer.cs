@@ -33,12 +33,6 @@
             this.tbxStudentID = new System.Windows.Forms.TextBox();
             this.lblId = new System.Windows.Forms.Label();
             this.gbxPhone = new System.Windows.Forms.GroupBox();
-            this.lvwPhoneNumbers = new System.Windows.Forms.ListView();
-            this.lvcPhoneType = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.lvcPhoneNumber = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.btnPhoneAdd = new System.Windows.Forms.Button();
-            this.cbxPhoneType = new System.Windows.Forms.ComboBox();
-            this.tbxPhoneNumber = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.cbxStudentType = new System.Windows.Forms.ComboBox();
             this.lblBirthdate = new System.Windows.Forms.Label();
@@ -58,34 +52,22 @@
             this.tbxLastName = new System.Windows.Forms.TextBox();
             this.lblFirstName = new System.Windows.Forms.Label();
             this.tbxFirstName = new System.Windows.Forms.TextBox();
+            this.dgvPhoneNumbers = new System.Windows.Forms.DataGridView();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.gbcPhoneNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gcbPhoneType = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.gtbPhoneNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AddStudentGB.SuspendLayout();
             this.gbxPhone.SuspendLayout();
             this.gbxGender.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPhoneNumbers)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // AddStudentGB
             // 
-            this.AddStudentGB.Controls.Add(this.btnAddStudent);
-            this.AddStudentGB.Controls.Add(this.tbxStudentID);
-            this.AddStudentGB.Controls.Add(this.lblId);
+            this.AddStudentGB.Controls.Add(this.groupBox1);
             this.AddStudentGB.Controls.Add(this.gbxPhone);
-            this.AddStudentGB.Controls.Add(this.label5);
-            this.AddStudentGB.Controls.Add(this.cbxStudentType);
-            this.AddStudentGB.Controls.Add(this.lblBirthdate);
-            this.AddStudentGB.Controls.Add(this.dtpBirthdate);
-            this.AddStudentGB.Controls.Add(this.label2);
-            this.AddStudentGB.Controls.Add(this.tbxCountry);
-            this.AddStudentGB.Controls.Add(this.label1);
-            this.AddStudentGB.Controls.Add(this.tbxCity);
-            this.AddStudentGB.Controls.Add(this.gbxGender);
-            this.AddStudentGB.Controls.Add(this.label4);
-            this.AddStudentGB.Controls.Add(this.tbxZipCode);
-            this.AddStudentGB.Controls.Add(this.label3);
-            this.AddStudentGB.Controls.Add(this.tbxStreetAddress);
-            this.AddStudentGB.Controls.Add(this.lblLastName);
-            this.AddStudentGB.Controls.Add(this.tbxLastName);
-            this.AddStudentGB.Controls.Add(this.lblFirstName);
-            this.AddStudentGB.Controls.Add(this.tbxFirstName);
             this.AddStudentGB.Location = new System.Drawing.Point(14, 12);
             this.AddStudentGB.Name = "AddStudentGB";
             this.AddStudentGB.Size = new System.Drawing.Size(1051, 507);
@@ -95,7 +77,7 @@
             // 
             // btnAddStudent
             // 
-            this.btnAddStudent.Location = new System.Drawing.Point(15, 328);
+            this.btnAddStudent.Location = new System.Drawing.Point(12, 322);
             this.btnAddStudent.Name = "btnAddStudent";
             this.btnAddStudent.Size = new System.Drawing.Size(75, 23);
             this.btnAddStudent.TabIndex = 12;
@@ -105,7 +87,7 @@
             // 
             // tbxStudentID
             // 
-            this.tbxStudentID.Location = new System.Drawing.Point(97, 25);
+            this.tbxStudentID.Location = new System.Drawing.Point(94, 19);
             this.tbxStudentID.Name = "tbxStudentID";
             this.tbxStudentID.Size = new System.Drawing.Size(141, 20);
             this.tbxStudentID.TabIndex = 0;
@@ -113,7 +95,7 @@
             // lblId
             // 
             this.lblId.AutoSize = true;
-            this.lblId.Location = new System.Drawing.Point(12, 28);
+            this.lblId.Location = new System.Drawing.Point(9, 22);
             this.lblId.Name = "lblId";
             this.lblId.Size = new System.Drawing.Size(18, 13);
             this.lblId.TabIndex = 22;
@@ -121,71 +103,18 @@
             // 
             // gbxPhone
             // 
-            this.gbxPhone.Controls.Add(this.lvwPhoneNumbers);
-            this.gbxPhone.Controls.Add(this.btnPhoneAdd);
-            this.gbxPhone.Controls.Add(this.cbxPhoneType);
-            this.gbxPhone.Controls.Add(this.tbxPhoneNumber);
+            this.gbxPhone.Controls.Add(this.dgvPhoneNumbers);
             this.gbxPhone.Location = new System.Drawing.Point(253, 19);
             this.gbxPhone.Name = "gbxPhone";
-            this.gbxPhone.Size = new System.Drawing.Size(303, 164);
+            this.gbxPhone.Size = new System.Drawing.Size(359, 364);
             this.gbxPhone.TabIndex = 20;
             this.gbxPhone.TabStop = false;
             this.gbxPhone.Text = "Phone Numbers";
             // 
-            // lvwPhoneNumbers
-            // 
-            this.lvwPhoneNumbers.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.lvcPhoneType,
-            this.lvcPhoneNumber});
-            this.lvwPhoneNumbers.FullRowSelect = true;
-            this.lvwPhoneNumbers.GridLines = true;
-            this.lvwPhoneNumbers.HideSelection = false;
-            this.lvwPhoneNumbers.Location = new System.Drawing.Point(6, 46);
-            this.lvwPhoneNumbers.Name = "lvwPhoneNumbers";
-            this.lvwPhoneNumbers.Size = new System.Drawing.Size(284, 112);
-            this.lvwPhoneNumbers.TabIndex = 3;
-            this.lvwPhoneNumbers.UseCompatibleStateImageBehavior = false;
-            this.lvwPhoneNumbers.View = System.Windows.Forms.View.Details;
-            // 
-            // lvcPhoneType
-            // 
-            this.lvcPhoneType.Text = "Type";
-            this.lvcPhoneType.Width = 87;
-            // 
-            // lvcPhoneNumber
-            // 
-            this.lvcPhoneNumber.Text = "Number";
-            this.lvcPhoneNumber.Width = 191;
-            // 
-            // btnPhoneAdd
-            // 
-            this.btnPhoneAdd.Location = new System.Drawing.Point(215, 17);
-            this.btnPhoneAdd.Name = "btnPhoneAdd";
-            this.btnPhoneAdd.Size = new System.Drawing.Size(75, 23);
-            this.btnPhoneAdd.TabIndex = 2;
-            this.btnPhoneAdd.Text = "Add";
-            this.btnPhoneAdd.UseVisualStyleBackColor = true;
-            this.btnPhoneAdd.Click += new System.EventHandler(this.btnPhoneAdd_Click);
-            // 
-            // cbxPhoneType
-            // 
-            this.cbxPhoneType.FormattingEnabled = true;
-            this.cbxPhoneType.Location = new System.Drawing.Point(6, 19);
-            this.cbxPhoneType.Name = "cbxPhoneType";
-            this.cbxPhoneType.Size = new System.Drawing.Size(76, 21);
-            this.cbxPhoneType.TabIndex = 0;
-            // 
-            // tbxPhoneNumber
-            // 
-            this.tbxPhoneNumber.Location = new System.Drawing.Point(88, 19);
-            this.tbxPhoneNumber.Name = "tbxPhoneNumber";
-            this.tbxPhoneNumber.Size = new System.Drawing.Size(121, 20);
-            this.tbxPhoneNumber.TabIndex = 1;
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 298);
+            this.label5.Location = new System.Drawing.Point(9, 292);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(71, 13);
             this.label5.TabIndex = 17;
@@ -193,8 +122,10 @@
             // 
             // cbxStudentType
             // 
+            this.cbxStudentType.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.cbxStudentType.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbxStudentType.FormattingEnabled = true;
-            this.cbxStudentType.Location = new System.Drawing.Point(97, 295);
+            this.cbxStudentType.Location = new System.Drawing.Point(94, 289);
             this.cbxStudentType.Name = "cbxStudentType";
             this.cbxStudentType.Size = new System.Drawing.Size(141, 21);
             this.cbxStudentType.TabIndex = 11;
@@ -202,7 +133,7 @@
             // lblBirthdate
             // 
             this.lblBirthdate.AutoSize = true;
-            this.lblBirthdate.Location = new System.Drawing.Point(12, 272);
+            this.lblBirthdate.Location = new System.Drawing.Point(9, 266);
             this.lblBirthdate.Name = "lblBirthdate";
             this.lblBirthdate.Size = new System.Drawing.Size(49, 13);
             this.lblBirthdate.TabIndex = 15;
@@ -210,7 +141,7 @@
             // 
             // dtpBirthdate
             // 
-            this.dtpBirthdate.Location = new System.Drawing.Point(97, 269);
+            this.dtpBirthdate.Location = new System.Drawing.Point(94, 263);
             this.dtpBirthdate.Name = "dtpBirthdate";
             this.dtpBirthdate.Size = new System.Drawing.Size(141, 20);
             this.dtpBirthdate.TabIndex = 10;
@@ -218,7 +149,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 243);
+            this.label2.Location = new System.Drawing.Point(9, 237);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(43, 13);
             this.label2.TabIndex = 13;
@@ -226,7 +157,7 @@
             // 
             // tbxCountry
             // 
-            this.tbxCountry.Location = new System.Drawing.Point(97, 243);
+            this.tbxCountry.Location = new System.Drawing.Point(94, 237);
             this.tbxCountry.Name = "tbxCountry";
             this.tbxCountry.Size = new System.Drawing.Size(141, 20);
             this.tbxCountry.TabIndex = 9;
@@ -234,7 +165,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 217);
+            this.label1.Location = new System.Drawing.Point(9, 211);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(24, 13);
             this.label1.TabIndex = 11;
@@ -242,7 +173,7 @@
             // 
             // tbxCity
             // 
-            this.tbxCity.Location = new System.Drawing.Point(97, 217);
+            this.tbxCity.Location = new System.Drawing.Point(94, 211);
             this.tbxCity.Name = "tbxCity";
             this.tbxCity.Size = new System.Drawing.Size(141, 20);
             this.tbxCity.TabIndex = 8;
@@ -253,7 +184,7 @@
             this.gbxGender.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.gbxGender.Controls.Add(this.rbtFemale);
             this.gbxGender.Controls.Add(this.rbtMale);
-            this.gbxGender.Location = new System.Drawing.Point(97, 104);
+            this.gbxGender.Location = new System.Drawing.Point(94, 98);
             this.gbxGender.Name = "gbxGender";
             this.gbxGender.Size = new System.Drawing.Size(125, 55);
             this.gbxGender.TabIndex = 5;
@@ -285,7 +216,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 191);
+            this.label4.Location = new System.Drawing.Point(9, 185);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(50, 13);
             this.label4.TabIndex = 8;
@@ -293,7 +224,7 @@
             // 
             // tbxZipCode
             // 
-            this.tbxZipCode.Location = new System.Drawing.Point(97, 191);
+            this.tbxZipCode.Location = new System.Drawing.Point(94, 185);
             this.tbxZipCode.Name = "tbxZipCode";
             this.tbxZipCode.Size = new System.Drawing.Size(141, 20);
             this.tbxZipCode.TabIndex = 7;
@@ -301,7 +232,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 165);
+            this.label3.Location = new System.Drawing.Point(9, 159);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(76, 13);
             this.label3.TabIndex = 6;
@@ -309,7 +240,7 @@
             // 
             // tbxStreetAddress
             // 
-            this.tbxStreetAddress.Location = new System.Drawing.Point(97, 165);
+            this.tbxStreetAddress.Location = new System.Drawing.Point(94, 159);
             this.tbxStreetAddress.Name = "tbxStreetAddress";
             this.tbxStreetAddress.Size = new System.Drawing.Size(141, 20);
             this.tbxStreetAddress.TabIndex = 6;
@@ -317,7 +248,7 @@
             // lblLastName
             // 
             this.lblLastName.AutoSize = true;
-            this.lblLastName.Location = new System.Drawing.Point(12, 81);
+            this.lblLastName.Location = new System.Drawing.Point(9, 75);
             this.lblLastName.Name = "lblLastName";
             this.lblLastName.Size = new System.Drawing.Size(58, 13);
             this.lblLastName.TabIndex = 4;
@@ -325,7 +256,7 @@
             // 
             // tbxLastName
             // 
-            this.tbxLastName.Location = new System.Drawing.Point(97, 78);
+            this.tbxLastName.Location = new System.Drawing.Point(94, 72);
             this.tbxLastName.Name = "tbxLastName";
             this.tbxLastName.Size = new System.Drawing.Size(141, 20);
             this.tbxLastName.TabIndex = 2;
@@ -333,7 +264,7 @@
             // lblFirstName
             // 
             this.lblFirstName.AutoSize = true;
-            this.lblFirstName.Location = new System.Drawing.Point(12, 55);
+            this.lblFirstName.Location = new System.Drawing.Point(9, 49);
             this.lblFirstName.Name = "lblFirstName";
             this.lblFirstName.Size = new System.Drawing.Size(57, 13);
             this.lblFirstName.TabIndex = 2;
@@ -341,10 +272,71 @@
             // 
             // tbxFirstName
             // 
-            this.tbxFirstName.Location = new System.Drawing.Point(97, 52);
+            this.tbxFirstName.Location = new System.Drawing.Point(94, 46);
             this.tbxFirstName.Name = "tbxFirstName";
             this.tbxFirstName.Size = new System.Drawing.Size(141, 20);
             this.tbxFirstName.TabIndex = 1;
+            // 
+            // dgvPhoneNumbers
+            // 
+            this.dgvPhoneNumbers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPhoneNumbers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.gcbPhoneType,
+            this.gtbPhoneNumber});
+            this.dgvPhoneNumbers.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvPhoneNumbers.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
+            this.dgvPhoneNumbers.Location = new System.Drawing.Point(3, 16);
+            this.dgvPhoneNumbers.Name = "dgvPhoneNumbers";
+            this.dgvPhoneNumbers.Size = new System.Drawing.Size(353, 345);
+            this.dgvPhoneNumbers.TabIndex = 23;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.AutoSize = true;
+            this.groupBox1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.groupBox1.Controls.Add(this.tbxStudentID);
+            this.groupBox1.Controls.Add(this.btnAddStudent);
+            this.groupBox1.Controls.Add(this.tbxFirstName);
+            this.groupBox1.Controls.Add(this.lblFirstName);
+            this.groupBox1.Controls.Add(this.lblId);
+            this.groupBox1.Controls.Add(this.tbxLastName);
+            this.groupBox1.Controls.Add(this.lblLastName);
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.tbxStreetAddress);
+            this.groupBox1.Controls.Add(this.cbxStudentType);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.lblBirthdate);
+            this.groupBox1.Controls.Add(this.tbxZipCode);
+            this.groupBox1.Controls.Add(this.dtpBirthdate);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.gbxGender);
+            this.groupBox1.Controls.Add(this.tbxCountry);
+            this.groupBox1.Controls.Add(this.tbxCity);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Location = new System.Drawing.Point(6, 19);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(241, 364);
+            this.groupBox1.TabIndex = 23;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Student Data";
+            // 
+            // gbcPhoneNumber
+            // 
+            this.gbcPhoneNumber.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.gbcPhoneNumber.HeaderText = "Number";
+            this.gbcPhoneNumber.Name = "gbcPhoneNumber";
+            // 
+            // gcbPhoneType
+            // 
+            this.gcbPhoneType.HeaderText = "Type";
+            this.gcbPhoneType.Name = "gcbPhoneType";
+            // 
+            // gtbPhoneNumber
+            // 
+            this.gtbPhoneNumber.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.gtbPhoneNumber.HeaderText = "Number";
+            this.gtbPhoneNumber.Name = "gtbPhoneNumber";
             // 
             // AddStudentControl
             // 
@@ -357,9 +349,11 @@
             this.AddStudentGB.ResumeLayout(false);
             this.AddStudentGB.PerformLayout();
             this.gbxPhone.ResumeLayout(false);
-            this.gbxPhone.PerformLayout();
             this.gbxGender.ResumeLayout(false);
             this.gbxGender.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPhoneNumbers)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -385,16 +379,15 @@
         private System.Windows.Forms.Label lblFirstName;
         private System.Windows.Forms.TextBox tbxFirstName;
         private System.Windows.Forms.GroupBox gbxPhone;
-        private System.Windows.Forms.ListView lvwPhoneNumbers;
-        private System.Windows.Forms.ColumnHeader lvcPhoneType;
-        private System.Windows.Forms.ColumnHeader lvcPhoneNumber;
-        private System.Windows.Forms.Button btnPhoneAdd;
-        private System.Windows.Forms.ComboBox cbxPhoneType;
-        private System.Windows.Forms.TextBox tbxPhoneNumber;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox cbxStudentType;
         private System.Windows.Forms.Label lblId;
         private System.Windows.Forms.TextBox tbxStudentID;
         private System.Windows.Forms.Button btnAddStudent;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.DataGridView dgvPhoneNumbers;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gbcPhoneNumber;
+        private System.Windows.Forms.DataGridViewComboBoxColumn gcbPhoneType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gtbPhoneNumber;
     }
 }

@@ -27,7 +27,7 @@ namespace DBLabs
 
     public class DBConnection : DBLabsDLL.DBConnectionBase
     {
-        SqlConnection con;
+        public SqlConnection con;
        
         ///*
         // * The constructor

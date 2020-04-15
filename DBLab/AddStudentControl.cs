@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -45,6 +46,26 @@ namespace DBLabs
              * Example: Population of Comboboxes and gridviews etc.
              * 
              */
+            dbconn.con.Open();
+            SqlCommand sqlCommand;
+            SqlDataReader sqlDataReader;
+            sqlCommand = new SqlCommand("SELECT Type from PhoneTypes", dbconn.con);
+            sqlDataReader = sqlCommand.ExecuteReader();
+            if(sqlDataReader.HasRows)
+            while (sqlDataReader.Read())
+            {
+                gcbPhoneType.Items.Add(sqlDataReader.GetString(0));
+            }
+            sqlDataReader.Close();
+            sqlCommand = new SqlCommand("SELECT Type from StudentTypes", dbconn.con);
+            sqlDataReader = sqlCommand.ExecuteReader();
+            if (sqlDataReader.HasRows)
+                while (sqlDataReader.Read())
+                {
+                    cbxStudentType.Items.Add(sqlDataReader.GetString(0));
+                }
+            sqlDataReader.Close();
+            dbconn.con.Close();
         }
         public void ResetAddStudentControl()
         {
@@ -55,6 +76,17 @@ namespace DBLabs
              * Example: Emptying textboxes and gridviews
              * 
              */
+            tbxStudentID.ResetText();
+            tbxFirstName.ResetText();
+            tbxLastName.ResetText();
+            rbtFemale.Checked = true;
+            tbxStreetAddress.ResetText();
+            tbxZipCode.ResetText();
+            tbxCity.ResetText();
+            tbxCountry.ResetText();
+            dtpBirthdate.ResetText();
+            cbxStudentType.ResetText();
+            dgvPhoneNumbers.Rows.Clear();
         }
 
 
@@ -68,6 +100,7 @@ namespace DBLabs
             if(dbconn.CallSPAddStudent(tbxStudentID.Text, tbxFirstName.Text, tbxLastName.Text, gender, tbxStreetAddress.Text, tbxZipCode.Text, tbxCity.Text, tbxCountry.Text, dtpBirthdate.Value.ToString(), cbxStudentType.Text))
             {
                 MessageBox.Show("Student added! :)", "Great success!");
+                ResetAddStudentControl();
             }
         }
 
