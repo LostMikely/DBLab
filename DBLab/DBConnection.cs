@@ -22,6 +22,27 @@ namespace DBLabs
         public string StudentType { get; set; }
         public List<PhoneNumber> PhoneNumbers;
 
+        public Student(string studentID, string firstName, string lastName, char gender, string streetAddress, int zipCode, string city, string country, string birthDate, string studentType)
+        {
+            StudentID = studentID;
+            FirstName = firstName;
+            LastName = lastName;
+            Gender = gender;
+            StreetAddress = streetAddress;
+            ZipCode = zipCode;
+            City = city;
+            Country = country;
+            BirthDate = birthDate;
+            StudentType = studentType;
+
+            PhoneNumbers = new List<PhoneNumber>();
+        }
+
+        public void AddPhoneNumber(string type, string number)
+        {
+            PhoneNumbers.Add(new PhoneNumber(type, number));
+        }
+
         public void ValidateData()
         {
             if (StudentID.Length == 0 || StudentID.Length > 8)
