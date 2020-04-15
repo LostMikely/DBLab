@@ -46,9 +46,14 @@ namespace DBLabs
              * Example: Population of Comboboxes and gridviews etc.
              * 
              */
+
+            
             dbconn.con.Open();
+
             SqlCommand sqlCommand;
             SqlDataReader sqlDataReader;
+
+            // Fill PhoneType GridViewComboBox
             sqlCommand = new SqlCommand("SELECT Type from PhoneTypes", dbconn.con);
             sqlDataReader = sqlCommand.ExecuteReader();
             if(sqlDataReader.HasRows)
@@ -57,6 +62,8 @@ namespace DBLabs
                 gcbPhoneType.Items.Add(sqlDataReader.GetString(0));
             }
             sqlDataReader.Close();
+
+            // Fill StudentType ComboBox
             sqlCommand = new SqlCommand("SELECT Type from StudentTypes", dbconn.con);
             sqlDataReader = sqlCommand.ExecuteReader();
             if (sqlDataReader.HasRows)
@@ -65,6 +72,8 @@ namespace DBLabs
                     cbxStudentType.Items.Add(sqlDataReader.GetString(0));
                 }
             sqlDataReader.Close();
+
+            // Close database connection, always at the end.
             dbconn.con.Close();
         }
         public void ResetAddStudentControl()
