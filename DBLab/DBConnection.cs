@@ -8,23 +8,6 @@ using System.Windows.Forms;
 
 namespace DBLabs
 {
-    class PhoneNumber
-    {
-        public string Type { get; set; }
-        public string Number { get; set; }
-
-        public PhoneNumber(string type, string number)
-        {
-            Type = type;
-            Number = number;
-        }
-
-        public void ValidateData()
-        {
-
-        }
-    }
-
     public class DBConnection : DBLabsDLL.DBConnectionBase
     {
         public SqlConnection con;
@@ -71,9 +54,8 @@ namespace DBLabs
 
     // Here you need to implement your own methods that call the stored procedures 
     // addStudent and addStudentPhoneNo
-        public bool CallSPAddStudent(string studentID, string firstName, string lastName, char gender, string streetAddress, string zipCode, string city, string country, string birthDate, string studentType)
+        public bool CallSPAddStudent(string studentID, string firstName, string lastName, char gender, string streetAddress, string zipCode, string city, string country, string birthDate, string studentType, DataGridView phoneEntries)
         {
-
             if (studentID.Length == 0 || studentID.Length > 8)
             {
                 MessageBox.Show("Error: Incorrect student ID", "Data validation error");
@@ -121,6 +103,24 @@ namespace DBLabs
                 MessageBox.Show("Error: Incorrect student type", "Data validation error");
                 return false;
             }
+
+            for (int i = 0; i < phoneEntries.RowCount - 1; i++)
+            {
+                if ((String)phoneEntries[0, i].Value == null)
+                {
+                    MessageBox.Show($"Error: Number type is missing for phone number field no. {i + 1}.", "Data validation error");
+                    return false;
+                }
+                if ((String)phoneEntries[1, i].Value == null)
+                {
+                    MessageBox.Show($"Error: Number is missing for phone number field no. {i + 1}.", "Data validation error");
+                    return false;
+                }
+            }
+
+            // Call the stored procedure
+
+
             return true;
         }
 

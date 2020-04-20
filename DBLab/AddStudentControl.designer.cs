@@ -54,9 +54,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.gbxPhone = new System.Windows.Forms.GroupBox();
             this.dgvPhoneNumbers = new System.Windows.Forms.DataGridView();
-            this.gbcPhoneNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gcbPhoneType = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.gtbPhoneNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gbcPhoneNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnDeleteNumber = new System.Windows.Forms.Button();
             this.AddStudentGB.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.gbxGender.SuspendLayout();
@@ -67,6 +68,7 @@
             // AddStudentGB
             // 
             this.AddStudentGB.Controls.Add(this.groupBox1);
+            this.AddStudentGB.Controls.Add(this.btnAddStudent);
             this.AddStudentGB.Controls.Add(this.gbxPhone);
             this.AddStudentGB.Location = new System.Drawing.Point(14, 12);
             this.AddStudentGB.Name = "AddStudentGB";
@@ -77,10 +79,8 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.AutoSize = true;
             this.groupBox1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.groupBox1.Controls.Add(this.tbxStudentID);
-            this.groupBox1.Controls.Add(this.btnAddStudent);
             this.groupBox1.Controls.Add(this.tbxFirstName);
             this.groupBox1.Controls.Add(this.lblFirstName);
             this.groupBox1.Controls.Add(this.lblId);
@@ -101,7 +101,7 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(6, 19);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(241, 364);
+            this.groupBox1.Size = new System.Drawing.Size(241, 321);
             this.groupBox1.TabIndex = 23;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Student Data";
@@ -115,9 +115,9 @@
             // 
             // btnAddStudent
             // 
-            this.btnAddStudent.Location = new System.Drawing.Point(12, 322);
+            this.btnAddStudent.Location = new System.Drawing.Point(6, 346);
             this.btnAddStudent.Name = "btnAddStudent";
-            this.btnAddStudent.Size = new System.Drawing.Size(75, 23);
+            this.btnAddStudent.Size = new System.Drawing.Size(241, 35);
             this.btnAddStudent.TabIndex = 12;
             this.btnAddStudent.Text = "Add Student";
             this.btnAddStudent.UseVisualStyleBackColor = true;
@@ -299,32 +299,30 @@
             // 
             // gbxPhone
             // 
+            this.gbxPhone.Controls.Add(this.btnDeleteNumber);
             this.gbxPhone.Controls.Add(this.dgvPhoneNumbers);
             this.gbxPhone.Location = new System.Drawing.Point(253, 19);
             this.gbxPhone.Name = "gbxPhone";
-            this.gbxPhone.Size = new System.Drawing.Size(359, 364);
+            this.gbxPhone.Size = new System.Drawing.Size(368, 321);
             this.gbxPhone.TabIndex = 20;
             this.gbxPhone.TabStop = false;
             this.gbxPhone.Text = "Phone Numbers";
             // 
             // dgvPhoneNumbers
             // 
+            this.dgvPhoneNumbers.AllowUserToResizeColumns = false;
+            this.dgvPhoneNumbers.AllowUserToResizeRows = false;
             this.dgvPhoneNumbers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPhoneNumbers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.gcbPhoneType,
             this.gtbPhoneNumber});
-            this.dgvPhoneNumbers.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvPhoneNumbers.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
-            this.dgvPhoneNumbers.Location = new System.Drawing.Point(3, 16);
+            this.dgvPhoneNumbers.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnKeystroke;
+            this.dgvPhoneNumbers.Location = new System.Drawing.Point(6, 16);
+            this.dgvPhoneNumbers.MultiSelect = false;
             this.dgvPhoneNumbers.Name = "dgvPhoneNumbers";
-            this.dgvPhoneNumbers.Size = new System.Drawing.Size(353, 345);
+            this.dgvPhoneNumbers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvPhoneNumbers.Size = new System.Drawing.Size(356, 267);
             this.dgvPhoneNumbers.TabIndex = 23;
-            // 
-            // gbcPhoneNumber
-            // 
-            this.gbcPhoneNumber.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.gbcPhoneNumber.HeaderText = "Number";
-            this.gbcPhoneNumber.Name = "gbcPhoneNumber";
             // 
             // gcbPhoneType
             // 
@@ -337,6 +335,22 @@
             this.gtbPhoneNumber.HeaderText = "Number";
             this.gtbPhoneNumber.Name = "gtbPhoneNumber";
             // 
+            // gbcPhoneNumber
+            // 
+            this.gbcPhoneNumber.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.gbcPhoneNumber.HeaderText = "Number";
+            this.gbcPhoneNumber.Name = "gbcPhoneNumber";
+            // 
+            // btnDeleteNumber
+            // 
+            this.btnDeleteNumber.Location = new System.Drawing.Point(6, 289);
+            this.btnDeleteNumber.Name = "btnDeleteNumber";
+            this.btnDeleteNumber.Size = new System.Drawing.Size(120, 23);
+            this.btnDeleteNumber.TabIndex = 24;
+            this.btnDeleteNumber.Text = "Delete Phone Number";
+            this.btnDeleteNumber.UseVisualStyleBackColor = true;
+            this.btnDeleteNumber.Click += new System.EventHandler(this.btnDeleteNumber_Click);
+            // 
             // AddStudentControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -346,7 +360,6 @@
             this.Size = new System.Drawing.Size(1087, 533);
             this.Load += new System.EventHandler(this.LoadAddStudentControl);
             this.AddStudentGB.ResumeLayout(false);
-            this.AddStudentGB.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.gbxGender.ResumeLayout(false);
@@ -388,5 +401,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn gbcPhoneNumber;
         private System.Windows.Forms.DataGridViewComboBoxColumn gcbPhoneType;
         private System.Windows.Forms.DataGridViewTextBoxColumn gtbPhoneNumber;
+        private System.Windows.Forms.Button btnDeleteNumber;
     }
 }

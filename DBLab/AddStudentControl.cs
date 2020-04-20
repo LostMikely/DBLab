@@ -57,10 +57,10 @@ namespace DBLabs
             sqlCommand = new SqlCommand("SELECT Type from PhoneTypes", dbconn.con);
             sqlDataReader = sqlCommand.ExecuteReader();
             if(sqlDataReader.HasRows)
-            while (sqlDataReader.Read())
-            {
-                gcbPhoneType.Items.Add(sqlDataReader.GetString(0));
-            }
+                while (sqlDataReader.Read())
+                {
+                    gcbPhoneType.Items.Add(sqlDataReader.GetString(0));
+                }
             sqlDataReader.Close();
 
             // Fill StudentType ComboBox
@@ -106,16 +106,20 @@ namespace DBLabs
             else if (rbtMale.Checked) gender = 'M';
             else throw new Exception("Something weird just happened...");
 
-            if(dbconn.CallSPAddStudent(tbxStudentID.Text, tbxFirstName.Text, tbxLastName.Text, gender, tbxStreetAddress.Text, tbxZipCode.Text, tbxCity.Text, tbxCountry.Text, dtpBirthdate.Value.ToString(), cbxStudentType.Text))
+            
+
+            if(dbconn.CallSPAddStudent(tbxStudentID.Text, tbxFirstName.Text, tbxLastName.Text, gender, tbxStreetAddress.Text, tbxZipCode.Text, tbxCity.Text, tbxCountry.Text, dtpBirthdate.Value.ToString(), cbxStudentType.Text, dgvPhoneNumbers))
             {
                 MessageBox.Show("Student added! :)", "Great success!");
                 ResetAddStudentControl();
             }
         }
 
-        private void btnPhoneAdd_Click(object sender, EventArgs e)
+        private void btnDeleteNumber_Click(object sender, EventArgs e)
         {
-            
+            if(dgvPhoneNumbers.SelectedRows.Count == 1)
+                if(dgvPhoneNumbers.SelectedRows[0].Index != dgvPhoneNumbers.RowCount - 1)
+                    dgvPhoneNumbers.Rows.Remove(dgvPhoneNumbers.SelectedRows[0]);
         }
     }
 }
