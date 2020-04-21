@@ -106,6 +106,7 @@ namespace DBLabs
 
             for (int i = 0; i < phoneEntries.RowCount - 1; i++)
             {
+
                 if ((String)phoneEntries[0, i].Value == null)
                 {
                     MessageBox.Show($"Error: Number type is missing for phone number field no. {i + 1}.", "Data validation error");
@@ -119,8 +120,35 @@ namespace DBLabs
             }
 
             // Call the stored procedure
+            try
+            {
+                if (con.State == ConnectionState.Closed)
+                    con.Open();
+                SqlCommand cmd = new SqlCommand("addStudent", con);
+                cmd.CommandType = CommandType.StoredProcedure;
 
+                cmd.Parameters.AddWithValue("@StudentID", studentID);
+                cmd.Parameters.AddWithValue("@FirstName", firstName);
+                cmd.Parameters.AddWithValue("@LastName", lastName);
+                cmd.Parameters.AddWithValue("@Gender", gender);
+                cmd.Parameters.AddWithValue("@StreetAddress", streetAddress);
+                cmd.Parameters.AddWithValue("@ZipCode", zipCode);
+                cmd.Parameters.AddWithValue("@City", city);
+                cmd.Parameters.AddWithValue("@Country", country);
+                cmd.Parameters.AddWithValue("@BirthDate", birthDate);
+                cmd.Parameters.AddWithValue("@StudentType", studentType);
 
+                cmd.ExecuteNonQuery();
+            }
+            catch (SqlException exception)
+            {
+                // non-unique StudentID
+                if (exception.Number == 2627)
+                {
+                    MessageBox.Show("Error: Primary key violation", "Student with this ID already exists");
+                    return false;
+                }
+            }
             return true;
         }
 

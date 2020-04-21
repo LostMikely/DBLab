@@ -108,7 +108,7 @@ namespace DBLabs
 
             
 
-            if(dbconn.CallSPAddStudent(tbxStudentID.Text, tbxFirstName.Text, tbxLastName.Text, gender, tbxStreetAddress.Text, tbxZipCode.Text, tbxCity.Text, tbxCountry.Text, dtpBirthdate.Value.ToString(), cbxStudentType.Text, dgvPhoneNumbers))
+            if(dbconn.CallSPAddStudent(tbxStudentID.Text, tbxFirstName.Text, tbxLastName.Text, gender, tbxStreetAddress.Text, tbxZipCode.Text, tbxCity.Text, tbxCountry.Text, dtpBirthdate.Value.ToString(), cbxStudentType.Text, dgvPhoneNumbers, dbconn))
             {
                 MessageBox.Show("Student added! :)", "Great success!");
                 ResetAddStudentControl();
