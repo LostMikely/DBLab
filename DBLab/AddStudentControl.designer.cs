@@ -31,7 +31,6 @@
             this.AddStudentGB = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tbxStudentID = new System.Windows.Forms.TextBox();
-            this.btnAddStudent = new System.Windows.Forms.Button();
             this.tbxFirstName = new System.Windows.Forms.TextBox();
             this.lblFirstName = new System.Windows.Forms.Label();
             this.lblId = new System.Windows.Forms.Label();
@@ -52,12 +51,13 @@
             this.tbxCountry = new System.Windows.Forms.TextBox();
             this.tbxCity = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnAddStudent = new System.Windows.Forms.Button();
             this.gbxPhone = new System.Windows.Forms.GroupBox();
+            this.btnDeleteNumber = new System.Windows.Forms.Button();
             this.dgvPhoneNumbers = new System.Windows.Forms.DataGridView();
             this.gcbPhoneType = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.gtbPhoneNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gbcPhoneNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnDeleteNumber = new System.Windows.Forms.Button();
             this.AddStudentGB.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.gbxGender.SuspendLayout();
@@ -112,16 +112,6 @@
             this.tbxStudentID.Name = "tbxStudentID";
             this.tbxStudentID.Size = new System.Drawing.Size(141, 20);
             this.tbxStudentID.TabIndex = 0;
-            // 
-            // btnAddStudent
-            // 
-            this.btnAddStudent.Location = new System.Drawing.Point(6, 346);
-            this.btnAddStudent.Name = "btnAddStudent";
-            this.btnAddStudent.Size = new System.Drawing.Size(241, 35);
-            this.btnAddStudent.TabIndex = 12;
-            this.btnAddStudent.Text = "Add Student";
-            this.btnAddStudent.UseVisualStyleBackColor = true;
-            this.btnAddStudent.Click += new System.EventHandler(this.btnAddStudent_Click);
             // 
             // tbxFirstName
             // 
@@ -216,6 +206,7 @@
             // 
             // dtpBirthdate
             // 
+            this.dtpBirthdate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpBirthdate.Location = new System.Drawing.Point(94, 263);
             this.dtpBirthdate.Name = "dtpBirthdate";
             this.dtpBirthdate.Size = new System.Drawing.Size(141, 20);
@@ -297,6 +288,16 @@
             this.label1.TabIndex = 11;
             this.label1.Text = "City";
             // 
+            // btnAddStudent
+            // 
+            this.btnAddStudent.Location = new System.Drawing.Point(6, 346);
+            this.btnAddStudent.Name = "btnAddStudent";
+            this.btnAddStudent.Size = new System.Drawing.Size(241, 35);
+            this.btnAddStudent.TabIndex = 12;
+            this.btnAddStudent.Text = "Add Student";
+            this.btnAddStudent.UseVisualStyleBackColor = true;
+            this.btnAddStudent.Click += new System.EventHandler(this.btnAddStudent_Click);
+            // 
             // gbxPhone
             // 
             this.gbxPhone.Controls.Add(this.btnDeleteNumber);
@@ -307,6 +308,16 @@
             this.gbxPhone.TabIndex = 20;
             this.gbxPhone.TabStop = false;
             this.gbxPhone.Text = "Phone Numbers";
+            // 
+            // btnDeleteNumber
+            // 
+            this.btnDeleteNumber.Location = new System.Drawing.Point(6, 289);
+            this.btnDeleteNumber.Name = "btnDeleteNumber";
+            this.btnDeleteNumber.Size = new System.Drawing.Size(120, 23);
+            this.btnDeleteNumber.TabIndex = 24;
+            this.btnDeleteNumber.Text = "Delete Phone Number";
+            this.btnDeleteNumber.UseVisualStyleBackColor = true;
+            this.btnDeleteNumber.Click += new System.EventHandler(this.btnDeleteNumber_Click);
             // 
             // dgvPhoneNumbers
             // 
@@ -340,16 +351,6 @@
             this.gbcPhoneNumber.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.gbcPhoneNumber.HeaderText = "Number";
             this.gbcPhoneNumber.Name = "gbcPhoneNumber";
-            // 
-            // btnDeleteNumber
-            // 
-            this.btnDeleteNumber.Location = new System.Drawing.Point(6, 289);
-            this.btnDeleteNumber.Name = "btnDeleteNumber";
-            this.btnDeleteNumber.Size = new System.Drawing.Size(120, 23);
-            this.btnDeleteNumber.TabIndex = 24;
-            this.btnDeleteNumber.Text = "Delete Phone Number";
-            this.btnDeleteNumber.UseVisualStyleBackColor = true;
-            this.btnDeleteNumber.Click += new System.EventHandler(this.btnDeleteNumber_Click);
             // 
             // AddStudentControl
             // 

@@ -54,7 +54,7 @@ namespace DBLabs
 
     // Here you need to implement your own methods that call the stored procedures 
     // addStudent and addStudentPhoneNo
-        public bool CallSPAddStudent(string studentID, string firstName, string lastName, char gender, string streetAddress, string zipCode, string city, string country, string birthDate, string studentType, DataGridView phoneEntries)
+        public bool CallSPAddStudent(string studentID, string firstName, string lastName, string gender, string streetAddress, string zipCode, string city, string country, string birthDate, string studentType, DataGridViewRowCollection phoneEntries)
         {
             if (studentID.Length == 0 || studentID.Length > 8)
             {
@@ -74,7 +74,7 @@ namespace DBLabs
                 return false;
             }
 
-            if (gender != 'M' && gender != 'F' && gender != 'U')
+            if (gender != "male" && gender != "female")
             {
                 MessageBox.Show("Error: Incorrect gender", "Data validation error");
                 return false;
@@ -104,20 +104,21 @@ namespace DBLabs
                 return false;
             }
 
-            for (int i = 0; i < phoneEntries.RowCount - 1; i++)
+            for (int i = 0; i < phoneEntries.Count - 1; i++)
             {
-
-                if ((String)phoneEntries[0, i].Value == null)
+                if ((String)phoneEntries[i].Cells[0].Value == null)
                 {
-                    MessageBox.Show($"Error: Number type is missing for phone number field no. {i + 1}.", "Data validation error");
+                    MessageBox.Show($"Error: Type is missing for phone number field no. {i + 1}.", "Data validation error");
                     return false;
                 }
-                if ((String)phoneEntries[1, i].Value == null)
+                else if ((String)phoneEntries[i].Cells[1].Value == null)
                 {
                     MessageBox.Show($"Error: Number is missing for phone number field no. {i + 1}.", "Data validation error");
                     return false;
                 }
             }
+
+            int rowsAffected;
 
             // Call the stored procedure
             try
@@ -138,25 +139,77 @@ namespace DBLabs
                 cmd.Parameters.AddWithValue("@BirthDate", birthDate);
                 cmd.Parameters.AddWithValue("@StudentType", studentType);
 
-                cmd.ExecuteNonQuery();
-            }
-            catch (SqlException exception)
+                rowsAffected = cmd.ExecuteNonQuery();
+                
+                for (int i = 0; i < phoneEntries.Count - 1; i++)
+                {
+                    cmd = new SqlCommand("addStudentPhoneNo", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.AddWithValue("@studentID", studentID);
+                    
+                    cmd.Parameters.AddWithValue("@phoneType", (String)phoneEntries[i].Cells[0].Value);
+                    cmd.Parameters.AddWithValue("@number", (String)phoneEntries[i].Cells[1].Value);
+
+                    cmd.ExecuteNonQuery();
+                }
+            } catch (SqlException exception)
             {
                 // non-unique StudentID
                 if (exception.Number == 2627)
                 {
-                    MessageBox.Show("Error: Primary key violation", "Student with this ID already exists");
-                    return false;
+                    MessageBox.Show("Error: Student with this ID already exists", "Primary key violation");
+                } else
+                {
+                    MessageBox.Show($"Error: {exception.Message}", "SQL Error");
                 }
+                con.Close();
+                return false;
             }
-            return true;
+
+            con.Close();
+            return (rowsAffected > 0);
         }
 
-/*
- --------------------------------------------------------------------------------------------
- STUB IMPLEMENTATIONS TO BE USED IN LAB 3. 
- --------------------------------------------------------------------------------------------
-*/
+        public void FetchStudentTypes(List<String> studentTypes)
+        {
+            SqlCommand sqlCommand;
+            SqlDataReader sqlDataReader;
+            
+            sqlCommand = new SqlCommand("SELECT Type from StudentTypes", con);
+            con.Open();
+            sqlDataReader = sqlCommand.ExecuteReader();
+            if (sqlDataReader.HasRows)
+                while (sqlDataReader.Read())
+                {
+                    studentTypes.Add(sqlDataReader.GetString(0));
+                }
+            sqlDataReader.Close();
+            con.Close();
+        }
+
+        public void FetchPhoneTypes(List<String> phoneTypes)
+        {
+            SqlCommand sqlCommand;
+            SqlDataReader sqlDataReader;
+            
+            sqlCommand = new SqlCommand("SELECT Type from PhoneTypes", con);
+            con.Open();
+            sqlDataReader = sqlCommand.ExecuteReader();
+            if (sqlDataReader.HasRows)
+                while (sqlDataReader.Read())
+                {
+                    phoneTypes.Add(sqlDataReader.GetString(0));
+                }
+            sqlDataReader.Close();
+            con.Close();
+        }
+
+        /*
+         --------------------------------------------------------------------------------------------
+         STUB IMPLEMENTATIONS TO BE USED IN LAB 3. 
+         --------------------------------------------------------------------------------------------
+        */
 
 
         /********************************************************************************************
