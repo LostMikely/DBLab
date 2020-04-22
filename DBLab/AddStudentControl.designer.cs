@@ -206,11 +206,13 @@
             // 
             // dtpBirthdate
             // 
+            this.dtpBirthdate.Checked = false;
             this.dtpBirthdate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpBirthdate.Location = new System.Drawing.Point(94, 263);
             this.dtpBirthdate.Name = "dtpBirthdate";
             this.dtpBirthdate.Size = new System.Drawing.Size(141, 20);
             this.dtpBirthdate.TabIndex = 10;
+            this.dtpBirthdate.Value = new System.DateTime(2020, 4, 22, 0, 0, 0, 0);
             // 
             // label4
             // 

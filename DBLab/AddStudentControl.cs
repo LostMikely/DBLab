@@ -47,7 +47,7 @@ namespace DBLabs
              * Example: Population of Comboboxes and gridviews etc.
              * 
              */
-            DateTime TenYearsAgo = DateTime.Now.AddYears(-10);
+            DateTime TenYearsAgo = DateTime.Today.AddYears(-10);
             dtpBirthdate.MaxDate = TenYearsAgo;
 
             var studentTypes = new List<String>();
@@ -89,7 +89,7 @@ namespace DBLabs
             else if (rbtMale.Checked) gender = "male";
             else throw new Exception("Something weird just happened...");
 
-            if(dbconn.CallSPAddStudent(tbxStudentID.Text, tbxFirstName.Text, tbxLastName.Text, gender, tbxStreetAddress.Text, tbxZipCode.Text, tbxCity.Text, tbxCountry.Text, dtpBirthdate.Value.ToString(), cbxStudentType.Text, dgvPhoneNumbers.Rows))
+            if(dbconn.CallSPAddStudent(tbxStudentID.Text, tbxFirstName.Text, tbxLastName.Text, gender, tbxStreetAddress.Text, tbxZipCode.Text, tbxCity.Text, tbxCountry.Text, dtpBirthdate.Text, cbxStudentType.Text, dgvPhoneNumbers.Rows))
             {
                 MessageBox.Show("Student added! :)", "Great success!");
                 ResetAddStudentControl();

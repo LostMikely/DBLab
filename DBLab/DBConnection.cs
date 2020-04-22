@@ -32,14 +32,14 @@ namespace DBLabs
          */
         public override bool login(string username, string password)
         {
-            username = "DVA234_2020_G26";
-            password = "Corona2020";
+            /*username = "DVA234_2020_G26";
+            password = "Corona2020";*/
             string conString = "Data Source=www4.idt.mdh.se;" + "Initial Catalog=DVA234_2020_G26_db;" + "User Id=" + username + "; Password=" + password + ";";
             con = new SqlConnection(conString);
             try
             {
                 con.Open();
-            } catch (Exception)
+            } catch (SqlException)
             {
                 return false;
             }
