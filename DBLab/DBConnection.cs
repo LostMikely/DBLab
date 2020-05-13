@@ -32,8 +32,8 @@ namespace DBLabs
          */
         public override bool login(string username, string password)
         {
-            /*username = "DVA234_2020_G26";
-            password = "Corona2020";*/
+            username = "DVA234_2020_G26";
+            password = "Corona2020";
             string conString = "Data Source=www4.idt.mdh.se;" + "Initial Catalog=DVA234_2020_G26_db;" + "User Id=" + username + "; Password=" + password + ";";
             con = new SqlConnection(conString);
             try
@@ -228,7 +228,7 @@ namespace DBLabs
          *              Any other   Error
          */
         public override int addPreReq(string cc, string preReqcc)
-        {
+        {           
             return 1;
         }
 
@@ -351,6 +351,7 @@ namespace DBLabs
             dt.Columns.Add("program");
             dt.Columns.Add("PgmStartYear");
             dt.Columns.Add("credits");
+            // Credits = sum of the credits of all of the student's FINISHED courses: (SELECT SUM(Credits) FROM REGISTRATIONDATA WHERE StudentID=id AND CourseStatus='avslutad')
             dt.Rows.Add("ssn11001", "Stud", "Studman", "Male", "StudentRoad 1", "773 33", "1985-11-20 00:00:00", "Program Student", "Västerås", "Sweden", "Datavetenskapliga programmet", 2011, 15);
             return dt;
         }
@@ -473,8 +474,30 @@ namespace DBLabs
          */
         public override DataTable getStudentRecord(string studId)
         {
-            //Dummy code - Remove!
             DataTable dt = new DataTable();
+
+            SqlCommand cmd = new SqlCommand("getRegistrationData", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@StudentID", studId);
+
+            if (con.State == ConnectionState.Closed)
+                con.Open();
+
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+
+            //DataSet studentRecord = new DataSet();
+            //adapter.Fill(studentRecord, "studentrecord");
+            adapter.Fill(dt);
+            /*dt.Columns.Add("coursecode");
+            dt.Columns.Add("coursename");
+            dt.Columns.Add("totalcredits");
+            dt.Columns.Add("courseinstance");
+            dt.Columns.Add("finished");
+            dt.Columns.Add("grade");
+            dt = */
+
+            con.Close();
+
             return dt;
         }
 
