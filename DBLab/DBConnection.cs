@@ -378,8 +378,6 @@ namespace DBLabs
         public override DataTable getStaff()
         {
             DataTable dt = new DataTable();
-            dt.Columns.Add("pnr");
-            dt.Columns.Add("fullname");
 
             SqlCommand cmd = new SqlCommand("SELECT * FROM STAFFLIST", con);
 
@@ -556,12 +554,21 @@ namespace DBLabs
          */
         public override DataTable getPreReqs(string cc)
         {
-            //Dummy code - Remove!
-            //Please note that you do not use DataTables like this at all when you are using a database!!
             DataTable dt = new DataTable();
-            dt.Columns.Add("Course Code");
-            dt.Columns.Add("Course Name");
-            dt.Rows.Add("DVA111", "C# course");
+
+            //dt.Columns.Add("Course Code");
+            //dt.Columns.Add("Course Name");
+
+            SqlCommand cmd = new SqlCommand("SELECT * FROM getPrerequisites(@cc)", con);
+            cmd.Parameters.AddWithValue("@cc", cc);
+
+            if (con.State == ConnectionState.Closed)
+                con.Open();
+
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            adapter.Fill(dt);
+
+            con.Close();
             return dt;
         }
 
