@@ -357,7 +357,6 @@ namespace DBLabs
                 con.Open();
 
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-
             adapter.Fill(dt);
 
             con.Close();
@@ -378,12 +377,20 @@ namespace DBLabs
          */
         public override DataTable getStaff()
         {
-            //Dummy code - Remove!
-            //Please note that you do not use DataTables like this at all when you are using a database!!
             DataTable dt = new DataTable();
             dt.Columns.Add("pnr");
             dt.Columns.Add("fullname");
-            dt.Rows.Add("111111-1111", "Test Testson");
+
+            SqlCommand cmd = new SqlCommand("SELECT * FROM STAFFLIST", con);
+
+            if (con.State == ConnectionState.Closed)
+                con.Open();
+
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            adapter.Fill(dt);
+
+            con.Close();
+
             return dt;
         }
 
@@ -400,12 +407,18 @@ namespace DBLabs
          */
         public override DataTable getLabasses()
         {
-            //Dummy code - Remove!
-            //Please note that you do not use DataTables like this at all when you are using a database!!
             DataTable dt = new DataTable();
-            dt.Columns.Add("StudentID");
-            dt.Columns.Add("fullname");
-            dt.Rows.Add("ssn11001", "Stud Studman");
+
+            SqlCommand cmd = new SqlCommand("SELECT * FROM STUDENTLIST", con);
+
+            if (con.State == ConnectionState.Closed)
+                con.Open();
+
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            adapter.Fill(dt);
+
+            con.Close();
+
             return dt;
         }
 
@@ -424,14 +437,22 @@ namespace DBLabs
          */
         public override DataTable getCourses()
         {
-            //Dummy code - Remove!
-            //Please note that you do not use DataTables like this at all when you are using a database!!
             DataTable dt = new DataTable();
             dt.Columns.Add("coursecode");
             dt.Columns.Add("name");
             dt.Columns.Add("credits");
             dt.Columns.Add("courseresponsible");
-            dt.Rows.Add("DVA234", "Databaser", 7.5, "111111-1111");
+
+            SqlCommand cmd = new SqlCommand("SELECT * FROM COURSESDATA", con);
+
+            if (con.State == ConnectionState.Closed)
+                con.Open();
+
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            adapter.Fill(dt);
+
+            con.Close();
+
             return dt;
         }
         /*
@@ -447,8 +468,19 @@ namespace DBLabs
          */
         public override int getCourseCost(string cc, int year, int period)
         {
-            /////////////////////////////////
-            return 10000;
+            SqlCommand cmd = new SqlCommand("SELECT dbo.getCourseCost(@cc, @year, @period)", con);
+            cmd.Parameters.AddWithValue("@cc", cc);
+            cmd.Parameters.AddWithValue("@year", year);
+            cmd.Parameters.AddWithValue("@period", period);
+
+            if (con.State == ConnectionState.Closed)
+                con.Open();
+
+            int courseCost = (int)cmd.ExecuteScalar();
+
+            con.Close();
+
+            return courseCost;
         }
 
         /*
@@ -505,7 +537,6 @@ namespace DBLabs
                 con.Open();
 
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-
             adapter.Fill(dt);
 
             con.Close();
@@ -549,9 +580,6 @@ namespace DBLabs
          */
         public override DataTable getInstances(string cc)
         {
-
-            //Dummy code - Remove!
-            //Please note that you do not use DataTables like this at all when you are using a database!!
             DataTable dt = new DataTable();
             dt.Columns.Add("year");
             dt.Columns.Add("period");
@@ -564,11 +592,10 @@ namespace DBLabs
                 con.Open();
 
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-
             adapter.Fill(dt);
+
             con.Close();
 
-            //dt.Rows.Add(2020, 4, "2020 p4");
             return dt;
         }
 
