@@ -271,6 +271,26 @@ namespace DBLabs
          */
         public override int addInstance(string cc, int year, int period)
         {
+            SqlCommand cmd = new SqlCommand("addInstance", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@period", period);
+            cmd.Parameters.AddWithValue("@year", year);
+            cmd.Parameters.AddWithValue("@cc", cc);
+
+            con.Open();
+
+            try
+            {
+                cmd.ExecuteNonQuery();
+            }
+            catch
+            {
+                return 0;
+            }
+            finally
+            {
+                con.Close();
+            }
             return 1;
         }
 
@@ -290,6 +310,30 @@ namespace DBLabs
          */
         public override int addStaff(string pnr, string cc, int year, int period, int hours)
         {
+            SqlCommand cmd = new SqlCommand("addStaff", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@pnr", pnr);
+            cmd.Parameters.AddWithValue("@cc", cc);
+            cmd.Parameters.AddWithValue("@year", year);
+            cmd.Parameters.AddWithValue("@period", period);
+            cmd.Parameters.AddWithValue("@hours", hours);
+            
+
+            con.Open();
+
+            try
+            {
+                cmd.ExecuteNonQuery();
+            }
+            catch
+            {
+                return 0;
+            }
+            finally
+            {
+                con.Close();
+            }
+
             return 1;
         }
 
@@ -309,6 +353,30 @@ namespace DBLabs
          */
         public override int addLabass(string studid, string cc, int year, int period, int hours, int salary)
         {
+            SqlCommand cmd = new SqlCommand("addLabass", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@studid", studid);
+            cmd.Parameters.AddWithValue("@cc", cc);
+            cmd.Parameters.AddWithValue("@year", year);
+            cmd.Parameters.AddWithValue("@period", period);
+            cmd.Parameters.AddWithValue("@hours", hours);
+            cmd.Parameters.AddWithValue("@salary", salary);
+
+            con.Open();
+
+            try
+            {
+                cmd.ExecuteNonQuery();
+            }
+            catch
+            {
+                return 0;
+            }
+            finally
+            {
+                con.Close();
+            }
+
             return 1;
         }
 
@@ -328,6 +396,28 @@ namespace DBLabs
          */
         public override int addCourse(string cc, string name, double credits, string responsible)
         {
+            SqlCommand cmd = new SqlCommand("addCourse", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@cc", cc);
+            cmd.Parameters.AddWithValue("@name", name);
+            cmd.Parameters.AddWithValue("@credits", credits);
+            cmd.Parameters.AddWithValue("@courseresponsible", responsible);
+
+            con.Open();
+
+            try
+            {
+                cmd.ExecuteNonQuery();
+            }
+            catch
+            {
+                return 0;
+            }
+            finally
+            {
+                con.Close();
+            }
+
             return 1;
         }
 
@@ -447,10 +537,6 @@ namespace DBLabs
         public override DataTable getCourses()
         {
             DataTable dt = new DataTable();
-            dt.Columns.Add("coursecode");
-            dt.Columns.Add("name");
-            dt.Columns.Add("credits");
-            dt.Columns.Add("courseresponsible");
 
             SqlCommand cmd = new SqlCommand("SELECT * FROM COURSESDATA", con);
 
@@ -485,7 +571,8 @@ namespace DBLabs
             if (con.State == ConnectionState.Closed)
                 con.Open();
 
-            int courseCost = (int)cmd.ExecuteScalar();
+            int courseCost = 0;
+            Int32.TryParse(cmd.ExecuteScalar().ToString(), out courseCost);
 
             con.Close();
 
@@ -566,9 +653,6 @@ namespace DBLabs
         public override DataTable getPreReqs(string cc)
         {
             DataTable dt = new DataTable();
-
-            //dt.Columns.Add("Course Code");
-            //dt.Columns.Add("Course Name");
 
             SqlCommand cmd = new SqlCommand("SELECT * FROM getPrerequisites(@cc)", con);
             cmd.Parameters.AddWithValue("@cc", cc);
