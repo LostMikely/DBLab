@@ -470,7 +470,7 @@ namespace DBLabs
             SqlCommand cmd = new SqlCommand("SELECT * FROM getCourseStaffing(@cc, @year, @period)", con);
             cmd.Parameters.AddWithValue("@cc", cc);
             cmd.Parameters.AddWithValue("@year", year);
-            cmd.Parameters.AddWithValue("@period", period);
+            cmd.Parameters.AddWithValue("@period", int.Parse(period));
 
             if (con.State == ConnectionState.Closed)
                 con.Open();
@@ -556,7 +556,19 @@ namespace DBLabs
             dt.Columns.Add("year");
             dt.Columns.Add("period");
             dt.Columns.Add("instance");
-            dt.Rows.Add(2020, 4, "2020 VT2");
+
+            SqlCommand cmd = new SqlCommand("SELECT * FROM getCourseInstances(@cc)", con);
+            cmd.Parameters.AddWithValue("@cc", cc);
+
+            if (con.State == ConnectionState.Closed)
+                con.Open();
+
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+
+            adapter.Fill(dt);
+            con.Close();
+
+            //dt.Rows.Add(2020, 4, "2020 p4");
             return dt;
         }
 
@@ -582,10 +594,10 @@ namespace DBLabs
                 con.Open();
 
             SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-
             adapter.Fill(dt);
 
-            //dt.Rows.Add("Home", "021-121212");
+            con.Close();
+
             return dt;
         }
 
