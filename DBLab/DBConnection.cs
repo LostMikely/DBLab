@@ -228,8 +228,30 @@ namespace DBLabs
          *              Any other   Error
          */
         public override int addPreReq(string cc, string preReqcc)
-        {           
-            return 1;
+        {
+            if (!String.Equals(cc, preReqcc))
+            {
+                SqlCommand cmd = new SqlCommand("addPrerequisites", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@cc", cc);
+                cmd.Parameters.AddWithValue("@pr", preReqcc);
+
+                con.Open();
+
+                try
+                {
+                    cmd.ExecuteNonQuery();
+                }
+                catch
+                {
+                    return 0;
+                }
+
+                con.Close();
+                return 1;
+            }
+
+            return 0;
         }
 
         /*
@@ -336,20 +358,6 @@ namespace DBLabs
         public override DataTable getStudentData()
         {
             DataTable dt = new DataTable();
-
-            dt.Columns.Add("StudentID");
-            dt.Columns.Add("FirstName");
-            dt.Columns.Add("LastName");
-            dt.Columns.Add("Gender");
-            dt.Columns.Add("StreetAdress");
-            dt.Columns.Add("ZipCode");
-            dt.Columns.Add("Birthdate");
-            dt.Columns.Add("StudentType");
-            dt.Columns.Add("City");
-            dt.Columns.Add("Country");
-            dt.Columns.Add("Program");
-            dt.Columns.Add("PgmStartYear");
-            dt.Columns.Add("Credits");
 
             SqlCommand cmd = new SqlCommand("SELECT * FROM STUDENTDATA", con);
 
