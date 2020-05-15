@@ -246,8 +246,11 @@ namespace DBLabs
                 {
                     return 0;
                 }
+                finally
+                {
+                    con.Close();
+                }
 
-                con.Close();
                 return 1;
             }
 
