@@ -550,6 +550,7 @@ namespace DBLabs
 
             return dt;
         }
+
         /*
          * Returns the salary costs for a course instance based on the teacher and lab assistent staffing.
          * 
