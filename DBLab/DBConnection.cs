@@ -5,6 +5,7 @@ using System.Text;
 using System.Data.SqlClient;
 using System.Data;
 using System.Windows.Forms;
+using System.Runtime.Remoting.Messaging;
 
 namespace DBLabs
 {
@@ -750,11 +751,18 @@ namespace DBLabs
         */
         public override DataTable getStaffingYears()
         {
-            //Dummy code - Remove!
-            //Please note that you do not use DataTables like this at all when you are using a database!!
             DataTable dt = new DataTable();
-            dt.Columns.Add("Year");
-            dt.Rows.Add(2000);
+
+            SqlCommand cmd = new SqlCommand("SELECT * FROM COURSEYEARS ORDER BY Year DESC", con);
+
+            if (con.State == ConnectionState.Closed)
+                con.Open();
+
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            adapter.Fill(dt);
+
+            con.Close();
+
             return dt;
         }
 
@@ -773,8 +781,22 @@ namespace DBLabs
             //Dummy code - Remove!
             //Please note that you do not use DataTables like this at all when you are using a database!!
             DataTable dt = new DataTable();
-            dt.Columns.Add("StaffingGrid");
-            dt.Rows.Add("All will be revealed in lab 4.. :)");
+            SqlCommand cmd = new SqlCommand("getStaff", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@CourseYear", year);
+
+            if (con.State == ConnectionState.Closed)
+                con.Open();
+
+            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+            adapter.Fill(dt);
+
+            DataRow header = dt.NewRow();
+            for(int i = 0; i < dt.Columns.Count; i++)
+                header[i] = dt.Columns[i];
+            dt.Rows.InsertAt(header, 0);
+
+            con.Close();
             return dt;
         }
     }
