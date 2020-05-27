@@ -778,8 +778,6 @@ namespace DBLabs
         */
         public override DataTable getStaffingGrid(string year)
         {
-            //Dummy code - Remove!
-            //Please note that you do not use DataTables like this at all when you are using a database!!
             DataTable dt = new DataTable();
             SqlCommand cmd = new SqlCommand("getStaff", con);
             cmd.CommandType = CommandType.StoredProcedure;
